@@ -1,0 +1,31 @@
+.footer{
+    background-color: #0A151E;
+    width: 100%;
+    padding-top: 17.5px;
+    padding-bottom: 17.5px;
+    .h1footer{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        // font-size: 10px;
+        // line-height: 12px;
+        font-size: clamp(10px, 0.5em + 1vw, 2em);
+        line-height: clamp(12px, 0.5em + 1vw, 1.5em);
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+    .linkfooter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        .logofooter{
+            width: 14.953271%;
+            min-width: 64px;
+            height: 28.125%;
+            min-height: 18px;
+            background-color: #0A151E;
+        }
+    }
+}
