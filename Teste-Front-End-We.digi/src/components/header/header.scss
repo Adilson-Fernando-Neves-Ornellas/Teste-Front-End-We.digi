@@ -1,0 +1,49 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 55px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 18px ;
+    .headermenu{
+        width: 6.233766%;
+        height: 24px;
+        .menubutton{
+            border: 0;
+            background-color: white;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            .buttonimg{
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        }
+    }
+    .headerlink{
+        width: 32.467532%;
+        height: 35px;
+        .logoheader{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .headercarinho{
+        width: 6.233766%;
+        height: 24px;
+        .buttoncarrinho{
+            border: 0;
+            background-color: white;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            .imgcarrinho{
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        }
+    }
+}
