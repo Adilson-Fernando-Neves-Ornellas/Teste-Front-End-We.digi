@@ -6,7 +6,7 @@ function Footer() {
   return (
     <>
     <footer className='footer'>
-      <h1 className='h1footer'>todos os direitos resercados à: we.digi</h1>
+      <h1 className='h1footer'>todos os direitos reservados à: we.digi</h1>
       <a className='linkfooter' href="/">
       <img className='logofooter' src={logofooter} alt="logo footer we.digi" />
       </a>
