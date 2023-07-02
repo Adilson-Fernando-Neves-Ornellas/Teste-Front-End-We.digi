@@ -3,6 +3,11 @@ import {v4 as uuidV4} from 'uuid';
 import "./Main.scss";
 import Sublista from './sublista/sublista';
 
+import imgaddlista from './assets/buttonaddlista.svg'
+import iconlist from './assets/iconlist.svg'
+import deletelist from './assets/excluirlista.svg'
+
+
 type listaProps ={
     id: string;
     titulo:string;
@@ -41,25 +46,43 @@ function Main() {
   },[lista])
 
   return (
-    <div>
+    <div className='main'>
+      <div className='mainconteiner'>
 
-      <input 
-       value={novaListaInicial}
-       type="text" 
-       placeholder='Qual lista você deseja criar?' 
-       onChange={(event) => setNovaListaInicial(event.target.value)}
-       />
+      <div className='maininputbutton'>
 
-      <button onClick={addNovoItem}>Adicionar</button>
+        <input 
+          className='imputmain'
+          value={novaListaInicial}
+          type="text" 
+          placeholder='Qual lista você deseja criar?' 
+          onChange={(event) => setNovaListaInicial(event.target.value)}
+          />
 
-      <ul>
-        {lista.map(listasInicial=>(
-        <li key={listasInicial.id}>{listasInicial.titulo}
-        <button onClick={() => removeItem(listasInicial.id)}>Deletar</button>
-        <div>
-          <Sublista></Sublista>
+        <button className='buttonmain' onClick={addNovoItem}>
+            <img className='imgbutton' src={imgaddlista} alt="button adicionar lista" />
+        </button>
+
+        </div>  
+      </div>
+
+      <ul className='ullista'>
+        <div className='ulconteiner'>
+          {lista.map(listasInicial=>(
+            <li className='lilista' key={listasInicial.id}>
+              <div className='conteinerli'>
+
+              <img className='iconlist' src={iconlist} alt="icon List" />
+              {listasInicial.titulo}
+            <button className='deleteibutton' onClick={() => removeItem(listasInicial.id)}>
+              <img className='deleteicon' src={deletelist} alt="Excluir Lista" />
+            </button>
+              </div>
+            <div className='sublistconteiner'>
+              <Sublista></Sublista>
+            </div>
+          </li>))}
         </div>
-        </li>))}
       </ul>
 
     </div>
