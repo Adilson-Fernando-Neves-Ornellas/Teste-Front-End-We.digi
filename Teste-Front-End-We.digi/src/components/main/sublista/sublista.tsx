@@ -2,6 +2,8 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import './sublista.scss';
 
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
 type subListaProps = {
   id: string;
   titulo: string;
@@ -50,6 +52,13 @@ function Sublista() {
     localStorage.setItem('subLista', JSON.stringify(subLista));
   }, [subLista]);
 
+ 
+  function onDragEnd() {
+    // TODO: Implement the logic to handle the drag and drop event.
+    // For example, reorder the list based on the result provided.
+  }
+
+
   return (
     <div>
       <input
@@ -60,29 +69,42 @@ function Sublista() {
       />
 
       <button onClick={addNovoItem}>Adicionar</button>
-
-      <ul>
-        {subLista.map(subListasInicial => (
-          <li key={subListasInicial.id}>
-            {subListasInicial.id === idEditado ? (
-              <>
-                <input
-                  type="text"
-                  value={tituloEditado}
-                  onChange={event => setTituloEditado(event.target.value)}
-                />
-                <button onClick={() => salvarEdicao(subListasInicial.id)}>Salvar</button>
-              </>
-            ) : (
-              <>
-                {subListasInicial.titulo}
-                <button onClick={() => editarItem(subListasInicial.id)}>Editar</button>
-              </>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId={novaSubListaInicial}>
+          {(provided) => (
+            <ul className='ulsublista' {...provided.droppableProps} ref={provided.innerRef}>
+               {provided.placeholder}
+              {subLista.map((subListasInicial, index)=> (
+                <Draggable key={subListasInicial.id} draggableId={subListasInicial.id} index={index}>
+                  {(provided) => (
+                    <li key={subListasInicial.id}
+                        ref={provided.innerRef} 
+                        {...provided.draggableProps} 
+                        {...provided.dragHandleProps}>
+                      {subListasInicial.id === idEditado ? (
+                        <>
+                          <input
+                            type="text"
+                            value={tituloEditado}
+                            onChange={event => setTituloEditado(event.target.value)}
+                            />
+                          <button onClick={() => salvarEdicao(subListasInicial.id)}>Salvar</button>
+                        </>
+                      ) : (
+                        <>
+                          {subListasInicial.titulo}
+                          <button onClick={() => editarItem(subListasInicial.id)}>Editar</button>
+                        </>
+                      )}
+                      <button onClick={() => removeItem(subListasInicial.id)}>Deletar</button>
+                    </li>
+                   )}
+                </Draggable>
+              ))}
+            </ul>
             )}
-            <button onClick={() => removeItem(subListasInicial.id)}>Deletar</button>
-          </li>
-        ))}
-      </ul>
+          </Droppable>
+        </DragDropContext>
     </div>
   );
 }
