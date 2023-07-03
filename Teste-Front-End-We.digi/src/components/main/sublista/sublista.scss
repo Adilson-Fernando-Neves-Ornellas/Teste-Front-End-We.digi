@@ -42,7 +42,7 @@
             list-style: none;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             background-color: white;
             padding: 10px 15px;
             .imputedit{
@@ -61,14 +61,19 @@
                 background-color: white;
                 border: 0;
                 .imgbuttoneditar{
-
+                    background-color: white;
                 }
             }
-            .deletarsublist{
-                background-color: white;
-                border: 0;
-                .imgbuttondeletar{
-
+            .conteinerdeletarsubitem{
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                .deletarsublist{
+                    background-color: white;
+                    border: 0;
+                    .imgbuttondeletar{
+                        background-color: white;
+                    }
                 }
             }
         }

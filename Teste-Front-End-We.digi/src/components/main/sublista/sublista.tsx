@@ -118,9 +118,11 @@ function Sublista() {
                             </button>
                           </>
                         )}
-                        <button className='deletarsublist' onClick={() => removeItem(subListasInicial.id)}>
-                          <img className='imgbuttondeletar' src={buttondeletar} alt="Excluir item sub Lista" />
-                         </button>
+                        <div className='conteinerdeletarsubitem'>
+                          <button className='deletarsublist' onClick={() => removeItem(subListasInicial.id)}>
+                            <img className='imgbuttondeletar' src={buttondeletar} alt="Excluir item sub Lista" />
+                          </button>
+                        </div>
                       </li>
                     )}
                   </Draggable>

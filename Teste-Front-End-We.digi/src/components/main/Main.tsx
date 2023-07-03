@@ -74,9 +74,11 @@ function Main() {
 
               <img className='iconlist' src={iconlist} alt="icon List" />
               {listasInicial.titulo}
-            <button className='deleteibutton' onClick={() => removeItem(listasInicial.id)}>
-              <img className='deleteicon' src={deletelist} alt="Excluir Lista" />
-            </button>
+                <div className='conteinerdeleteli'>
+                  <button className='deleteibutton' onClick={() => removeItem(listasInicial.id)}>
+                    <img className='deleteicon' src={deletelist} alt="Excluir Lista" />
+                  </button>
+                </div>
               </div>
             <div className='sublistconteiner'>
               <Sublista></Sublista>
