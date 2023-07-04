@@ -20,6 +20,8 @@
             background: #E2E8E9;
             width: 100%;
             color: black;
+            box-shadow: 0 0 0 0;
+            outline: 0;
         }
         .buttonaddsub{
             display: flex;
@@ -49,6 +51,8 @@
                 display: flex;
                 .imputedit{
                     border: 0;
+                    box-shadow: 0 0 0 0;
+                    outline: 0;
                 }
                 .buttonsalvaredit{
                     border: 0;
