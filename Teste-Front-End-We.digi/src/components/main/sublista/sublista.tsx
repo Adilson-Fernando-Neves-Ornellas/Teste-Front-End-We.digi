@@ -72,7 +72,7 @@ function Sublista() {
 
   return (
     <div className='subconteiner'>
-      <div className='conteinerinput'>
+      <form onSubmit={addNovoItem} className='conteinerinput'>
         <input
           className='inputsublist'
           value={novaSubListaInicial}
@@ -81,10 +81,10 @@ function Sublista() {
           onChange={event => setNovaSubListaInicial(event.target.value)}
         />
 
-        <button className='buttonaddsub' onClick={addNovoItem}>
+        <button className='buttonaddsub' onClick={addNovoItem} type='submit'>
           <img className='imgbuttonadd' src={buttonadd} alt="button adicionar" />
         </button>
-      </div>
+      </form>
 
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId={novaSubListaInicial}>
@@ -100,15 +100,15 @@ function Sublista() {
                       {...provided.draggableProps} 
                       {...provided.dragHandleProps}>
                         {subListasInicial.id === idEditado ? (
-                          <>
+                          <form className='formEditar' onSubmit={() => salvarEdicao(subListasInicial.id)}>
                             <input
                               className='imputedit'
                               type="text"
                               value={tituloEditado}
                               onChange={event => setTituloEditado(event.target.value)}
                               />
-                            <button className='buttonsalvaredit' onClick={() => salvarEdicao(subListasInicial.id)}>Salvar</button>
-                          </>
+                            <button className='buttonsalvaredit' onClick={() => salvarEdicao(subListasInicial.id)} type='submit'>Salvar</button>
+                          </form>
                         ) : (
                           <>
                             {subListasInicial.titulo}
