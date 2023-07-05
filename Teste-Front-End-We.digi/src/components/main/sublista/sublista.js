@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import './sublista.scss';
 
@@ -6,27 +6,23 @@ import buttonadd from './assets/buttonaddsub.svg'
 import buttoneditar from './assets/buttoneditar.svg'
 import buttondeletar from './assets/buttonexcluir.svg'
 
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable} from 'react-beautiful-dnd';
 
-type subListaProps = {
-  id: string;
-  titulo: string;
-}[];
 
 function Sublista() {
   const dataLocalStorage = JSON.parse(localStorage.getItem('subListas') || '[]');
-  const [subLista, setsubLista] = useState<subListaProps>(dataLocalStorage);
+  const [subLista, setsubLista] = useState(dataLocalStorage);
   const [novaSubListaInicial, setNovaSubListaInicial] = useState('');
-  const [idEditado, setIdEditado] = useState<string>(''); 
-  const [tituloEditado, setTituloEditado] = useState<string>(''); 
+  const [idEditado, setIdEditado] = useState(''); 
+  const [tituloEditado, setTituloEditado] = useState(''); 
 
-  function addNovoItem(event: FormEvent) {
+  function addNovoItem(event) {
     event.preventDefault();
     setsubLista([...subLista, { id: uuidV4(), titulo: novaSubListaInicial }]);
     setNovaSubListaInicial('');
   }
 
-  function editarItem(id: string) {
+  function editarItem(id) {
     const itemEditado = subLista.find(item => item.id === id);
     if (itemEditado) {
       setTituloEditado(itemEditado.titulo);
@@ -37,7 +33,7 @@ function Sublista() {
     }
   }
 
-  function salvarEdicao(id: string) {
+  function salvarEdicao(id) {
     setsubLista(subLista.map(item => {
       if (item.id === id) {
         return { ...item, titulo: tituloEditado };
@@ -48,7 +44,7 @@ function Sublista() {
     setTituloEditado('');
   }
 
-  function removeItem(id: string) {
+  function removeItem(id) {
     setsubLista(subLista.filter(subLista => subLista.id !== id));
   }
 
@@ -57,7 +53,7 @@ function Sublista() {
   }, [subLista]);
 
  
-  function onDragEnd(result: DropResult) {
+  function onDragEnd(result) {
     if (!result.destination) {
       return;
     }
@@ -87,7 +83,7 @@ function Sublista() {
       </form>
 
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId={novaSubListaInicial}>
+        <Droppable droppableId='subLista'>
           {(provided) => (
             <div className='ulconteiner'>
               <ul className='subLista' {...provided.droppableProps} ref={provided.innerRef}>

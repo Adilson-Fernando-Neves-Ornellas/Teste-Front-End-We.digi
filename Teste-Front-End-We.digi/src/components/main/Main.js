@@ -1,4 +1,4 @@
-import React, {FormEvent, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {v4 as uuidV4} from 'uuid';
 import "./Main.scss";
 import Sublista from './sublista/sublista';
@@ -7,11 +7,6 @@ import imgaddlista from './assets/buttonaddlista.svg'
 import iconlist from './assets/iconlist.svg'
 import deletelist from './assets/excluirlista.svg'
 
-
-type listaProps ={
-    id: string;
-    titulo:string;
-}[];
 
 function Main() {
   // const listasInicial=[
@@ -30,15 +25,15 @@ function Main() {
   //   },
   // ];
   const dataLocalStorage = JSON.parse(localStorage.getItem('listas')||'[]');
-  const [lista,setLista] = useState<listaProps>(dataLocalStorage);
+  const [lista,setLista] = useState(dataLocalStorage);
   const [novaListaInicial,setNovaListaInicial] = useState('');
 
-  function addNovoItem (event: FormEvent){
+  function addNovoItem (event){
     event.preventDefault();
     setLista([...lista, { id: uuidV4(), titulo:novaListaInicial}]);
     setNovaListaInicial('');
   }
-  function removeItem (id:string){
+  function removeItem (id){
     setLista(lista.filter(lista=>lista.id !== id))
   }
   useEffect(()=> {
