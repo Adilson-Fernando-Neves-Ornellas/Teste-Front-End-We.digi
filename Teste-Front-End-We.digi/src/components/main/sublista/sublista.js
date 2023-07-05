@@ -62,7 +62,9 @@ function Sublista() {
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
 
-    setsubLista(items);
+    setsubLista(items);  
+    
+    console.log(result)
   }
 
 
