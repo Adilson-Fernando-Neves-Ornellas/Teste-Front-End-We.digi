@@ -29,6 +29,8 @@
                 background: #E2E8E9;
                 border: 0;
                 padding: 0;
+                display: flex;
+                align-items: center;
                 .imgbutton{
                 background: #E2E8E9;
     
@@ -62,6 +64,9 @@
                     line-height: 17px;
                     .iconlist{
                         margin-left: 10px;
+                        background-color: white;
+                        border: 0;
+                        padding: 0;
                     }
                     .conteinerdeleteli{
                         display: flex;

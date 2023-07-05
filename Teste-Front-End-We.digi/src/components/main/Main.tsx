@@ -71,9 +71,10 @@ function Main() {
           {lista.map(listasInicial=>(
             <li className='lilista' key={listasInicial.id}>
               <div className='conteinerli'>
-
-              <img className='iconlist' src={iconlist} alt="icon List" />
-              {listasInicial.titulo}
+                <button className='iconlist'>
+                  <img  src={iconlist} alt="icon List" />
+                </button>
+                {listasInicial.titulo}
                 <div className='conteinerdeleteli'>
                   <button className='deleteibutton' onClick={() => removeItem(listasInicial.id)}>
                     <img className='deleteicon' src={deletelist} alt="Excluir Lista" />
